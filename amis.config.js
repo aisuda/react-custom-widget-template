@@ -19,7 +19,6 @@ module.exports = {
       extensions: ['.js', '.jsx', '.ts', '.tsx', 'json'], // 用于配置webpack在尝试过程中用到的后缀列表
       alias: {
         '@': resolve('src'),
-        $components: resolve('src/components'),
         $assets: resolve('src/assets'),
         $public: resolve('public'),
       },
@@ -75,7 +74,7 @@ module.exports = {
     entry: {
       // 自定义组件入口文件
       reactInfoCard: './src/index.js', // widget/info-card.jsx
-      reactInfoCardPlugin: './src/widget/plugin/info-card-plugin.jsx',
+      reactInfoCardPlugin: './src/widget/plugin/info-card-plugin.jsx'
     },
     // 用于构建生产环境代码的相关配置信息
     NODE_ENV: 'production',
