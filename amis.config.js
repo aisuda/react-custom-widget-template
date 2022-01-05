@@ -29,9 +29,10 @@ module.exports = {
       resolve('./src/assets/css/mixin.scss')
     ],
     // createDeclaration: true, // 打包时是否创建ts声明文件
-    ignoreNodeModules: true, // 打包时是否忽略 node_modules
+    ignoreNodeModules: false, // 打包时是否忽略 node_modules
+    allowList: ['amis-widget', 'jquery', /^vue/], // ignoreNodeModules为true时生效
+    // externals: ['amis-editor'],
     projectDir: ['src', 'editor'],
-    template: resolve('./editor/index.html'), // dev本地调试时需要html模板
   },
   // envParams：项目系统环境变量(根据执行命令中的环境变量批量替换项目源码中的相关参数)
   envParams: {
@@ -48,9 +49,9 @@ module.exports = {
   dev: {
     entry: { // 调试入口（本地编辑器中预览自定义组件入口）
       index: [
+        //'./editor/EditorDemo.jsx',
         './src/index.js', // widget/info-card.jsx
         './src/widget/plugin/info-card-plugin.jsx',
-        './editor/EditorDemo.jsx'
       ],
       // preview: './src/preview.js',
     },
@@ -70,6 +71,22 @@ module.exports = {
     },
     cssSourceMap: true,
   },
+  build: {
+    entry: {
+      reactInfoCard: './src/index.js', // widget/info-card.jsx
+      reactInfoCardPlugin: './src/widget/plugin/info-card-plugin.jsx'
+    },
+    // 用于构建生产环境代码的相关配置信息
+    NODE_ENV: 'production',
+    assetsRoot: resolve('./dist'), // 打包后的文件绝对路径（物理路径）
+    assetsPublicPath: '/react-cutom-widget-template/public/dist/', // 设置静态资源的引用路径（根域名+路径）
+    assetsSubDirectory: '', // 资源引用二级路径
+    productionSourceMap: false,
+    productionGzip: false,
+    productionGzipExtensions: ['js', 'css', 'json'],
+    openMonacoWebpackPlugin: false, // amis-editor需要
+    bundleAnalyzerReport: false,
+  },
   build2lib: {
     entry: {
       // 自定义组件入口文件
@@ -80,11 +97,11 @@ module.exports = {
     NODE_ENV: 'production',
     libraryName: 'amisWidget', // 构建第三方功能包时最后导出的引用变量名
     assetsRoot: resolve('./dist'), // 打包后的文件绝对路径（物理路径）
-    assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
+    assetsPublicPath: './', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '', // 资源引用二级路径
     productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
-    bundleAnalyzerReport: false,
+    bundleAnalyzerReport: true,
   }
 };
