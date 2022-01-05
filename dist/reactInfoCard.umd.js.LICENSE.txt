@@ -1,0 +1,22 @@
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+/*!
+ * react-custom-widget-template v1.0.2
+ * author: fex
+ * build tool: AKFun
+ * build time: Wed Jan 05 2022 21:48:04 GMT+0800 (China Standard Time)
+ * build tool info: https://github.com/wibetter/akfun
+ */
+
+/** @license React v16.14.0
+ * react.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
