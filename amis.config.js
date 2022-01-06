@@ -30,7 +30,7 @@ module.exports = {
     ],
     // createDeclaration: true, // 打包时是否创建ts声明文件
     ignoreNodeModules: false, // 打包时是否忽略 node_modules
-    allowList: ['amis-widget', 'jquery', /^vue/], // ignoreNodeModules为true时生效
+    allowList: [], // ignoreNodeModules为true时生效
     // externals: ['amis-editor'],
     projectDir: ['src', 'editor'],
   },
@@ -70,22 +70,7 @@ module.exports = {
       }
     },
     cssSourceMap: true,
-  },
-  build: {
-    entry: {
-      reactInfoCard: './src/index.js', // widget/info-card.jsx
-      reactInfoCardPlugin: './src/widget/plugin/info-card-plugin.jsx'
-    },
-    // 用于构建生产环境代码的相关配置信息
-    NODE_ENV: 'production',
-    assetsRoot: resolve('./dist'), // 打包后的文件绝对路径（物理路径）
-    assetsPublicPath: '/react-cutom-widget-template/public/dist/', // 设置静态资源的引用路径（根域名+路径）
-    assetsSubDirectory: '', // 资源引用二级路径
-    productionSourceMap: false,
-    productionGzip: false,
-    productionGzipExtensions: ['js', 'css', 'json'],
-    openMonacoWebpackPlugin: false, // amis-editor需要
-    bundleAnalyzerReport: false,
+    closeHotReload: false, // 是否关闭热更新
   },
   build2lib: {
     entry: {
@@ -99,6 +84,8 @@ module.exports = {
     assetsRoot: resolve('./dist'), // 打包后的文件绝对路径（物理路径）
     assetsPublicPath: './', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '', // 资源引用二级路径
+    ignoreNodeModules: true, // 打包时是否忽略 node_modules
+    allowList: [], // ignoreNodeModules为true时生效
     productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
