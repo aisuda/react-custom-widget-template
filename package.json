@@ -12,7 +12,6 @@
   "license": "MIT",
   "scripts": {
     "dev": "amis dev",
-    "build": "amis build",
     "build2lib": "amis build2lib",
     "format": "prettier --write \"src/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\""
   },
