@@ -1,5 +1,4 @@
 import InfoCard from './widget/info-card';
-// @ts-ignore
 import { registerRendererByType } from 'amis-widget';
 
 registerRendererByType(InfoCard, {
