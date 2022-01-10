@@ -29,14 +29,12 @@
       "files": [
         "/dist/reactInfoCard.css"
       ],
-      "status": true,
       "description": "信息展示卡片",
       "weight": 100,
       "editorPlugin": {
         "name": "react-info-card-plugin",
         "type": "react-info-card",
         "entry": "/dist/reactInfoCardPlugin.umd",
-        "status": true,
         "tag": [
           "展示"
         ],
