@@ -33,7 +33,7 @@ export default class InfoCard extends React.PureComponent {
           {img_count > 0 && <div className="img-count">{img_count}</div>}
         </div>
         <div className="news-info">
-          <div className="left media-mark">爱速搭 · 低代码平台</div>
+          <div className="left media-mark">爱速搭 · 低代码平台[1.0.5]</div>
           {comment_count && comment_count > 0 && (
             <div className="cmt-num right">
               {this.agreeDataFormat(comment_count)}评

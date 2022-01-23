@@ -1,6 +1,6 @@
 {
   "name": "react-custom-widget-template",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "amis自定义组件模板（react技术栈）",
   "keywords": [
     "自定义组件模板",
@@ -59,13 +59,13 @@
     "url": "https://github.com/aisuda/react-custom-widget-template/issues"
   },
   "dependencies": {
-    "amis-widget": "1.0.11",
+    "amis-widget": "^1.0.15",
     "react": "^16.8.6"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
-    "amis-widget-cli": "^1.1.6",
+    "amis-widget-cli": "^1.1.7",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5"
