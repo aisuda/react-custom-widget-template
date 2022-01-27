@@ -43,13 +43,7 @@ export default class InfoCard extends React.PureComponent {
         </div>
         <Empty
           image={Empty.PRESENTED_IMAGE_SIMPLE}
-          description={
-            <>
-              暂无内容
-              <br />
-              <span className="empty-widget-click">「点击添加布局元素」</span>
-            </>
-          }
+          description={<>暂无内容</>}
         />
       </div>
     );
