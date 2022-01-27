@@ -1,6 +1,6 @@
 {
   "name": "react-custom-widget-template",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "amis自定义组件模板（react技术栈）",
   "keywords": [
     "自定义组件模板",
@@ -60,6 +60,7 @@
   },
   "dependencies": {
     "amis-widget": "^1.0.15",
+    "antd": "^3.26.20",
     "react": "^16.8.6"
   },
   "devDependencies": {

@@ -8,7 +8,7 @@ export class InfoCardPlugin {
   $schema = '/schemas/UnkownSchema.json';
   name = 'react-info-card';
   description = '信息展示卡片';
-  tags = ['展示', '自定义'];
+  tags = ['自定义'];
   icon = 'fa fa-file-code-o';
   scaffold = {
     type: 'react-info-card',

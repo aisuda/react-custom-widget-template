@@ -32,7 +32,8 @@ module.exports = {
     ignoreNodeModules: false, // 打包时是否忽略 node_modules
     allowList: [], // ignoreNodeModules为true时生效
     // externals: ['amis-editor'],
-    projectDir: ['src', 'editor'],
+    // template: resolve('public/index.html'), // 本地预览自定义组件的页面模板
+    projectDir: ['src'],
   },
   dev: {
     entry: { // 调试入口（本地编辑器中预览自定义组件入口）
@@ -58,7 +59,7 @@ module.exports = {
       }
     },
     cssSourceMap: true,
-    closeHotReload: false, // 是否关闭热更新
+    closeHotReload: true, // 是否关闭热更新
   },
   build2lib: {
     entry: {

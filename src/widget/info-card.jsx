@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Empty } from 'antd';
 import './style.scss'; // 组件内容样式
 
 export default class InfoCard extends React.PureComponent {
@@ -22,7 +23,6 @@ export default class InfoCard extends React.PureComponent {
     return (
       <div className="news-card">
         <div className="news-title">
-          [amis-widget: 1.0.7]
           {title ||
             'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。'}
         </div>
@@ -34,13 +34,23 @@ export default class InfoCard extends React.PureComponent {
           {img_count > 0 && <div className="img-count">{img_count}</div>}
         </div>
         <div className="news-info">
-          <div className="left media-mark">爱速搭 · 低代码平台[1.0.5]</div>
+          <div className="left media-mark">爱速搭 · 低代码平台</div>
           {comment_count && comment_count > 0 && (
             <div className="cmt-num right">
               {this.agreeDataFormat(comment_count)}评
             </div>
           )}
         </div>
+        <Empty
+          image={Empty.PRESENTED_IMAGE_SIMPLE}
+          description={
+            <>
+              暂无内容
+              <br />
+              <span className="empty-widget-click">「点击添加布局元素」</span>
+            </>
+          }
+        />
       </div>
     );
   }
