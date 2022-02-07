@@ -24,7 +24,7 @@ export default class InfoCard extends React.PureComponent {
       <div className="news-card">
         <div className="news-title">
           {title ||
-            'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。'}
+            'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。.'}
         </div>
         <div className="item-imgbox">
           <div

@@ -33,6 +33,7 @@ module.exports = {
     allowList: [], // ignoreNodeModules为true时生效
     // externals: ['amis-editor'],
     projectDir: ['src'],
+    // template: resolve('./public/template.html'), // dev本地调试时需要html模板
   },
   dev: {
     entry: { // 调试入口（本地编辑器中预览自定义组件入口）
