@@ -61,9 +61,7 @@
   "dependencies": {
     "antd": "^3.26.20",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
-  },
-  "peerDependencies": {
+    "react-dom": "^16.8.6",
     "amis-widget": "^1.2.5"
   },
   "devDependencies": {
