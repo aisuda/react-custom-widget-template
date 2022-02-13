@@ -1,5 +1,6 @@
 'use strict';
 const path = require('path');
+
 // 统一路径解析
 function resolve(dir) {
   return path.resolve(__dirname, dir);
@@ -34,6 +35,7 @@ module.exports = {
     // externals: ['amis-editor'],
     projectDir: ['src'],
     // template: resolve('./public/template.html'), // dev本地调试时需要html模板
+    // plugins: [new debugPlugin()]
   },
   dev: {
     entry: { // 调试入口（本地编辑器中预览自定义组件入口）
@@ -42,7 +44,28 @@ module.exports = {
         './src/index.js', // widget/info-card.jsx
         './src/widget/plugin/info-card-plugin.jsx',
       ],
-      // preview: './src/preview.js',
+    },
+    // 用于开启本地调试模式的相关配置信息
+    NODE_ENV: 'development',
+    port: 80,
+    closeEditorClient: false, // 是否关闭自动注入editor
+    autoOpenBrowser: true,
+    assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
+    assetsSubDirectory: '',
+    hostname: 'localhost',
+    proxyTable: {
+      '/apiTest': {
+        target: 'http://api-test.com.cn', // 不支持跨域的接口根地址
+        ws: true,
+        changeOrigin: true
+      }
+    },
+    cssSourceMap: true,
+    closeHotReload: false, // 是否关闭热更新
+  },
+  preview: {
+    entry: { // 调试入口（本地编辑器中预览自定义组件入口）
+      index: './src/preview.js',
     },
     // 用于开启本地调试模式的相关配置信息
     NODE_ENV: 'development',
@@ -61,6 +84,31 @@ module.exports = {
     cssSourceMap: true,
     closeHotReload: false, // 是否关闭热更新
   },
+  linkDebug: {
+    entry: { // 调试入口（本地编辑器中预览自定义组件入口）
+      index: [
+        './src/index.js', // widget/info-card.jsx
+        './src/widget/plugin/info-card-plugin.jsx',
+      ],
+    },
+    // 用于开启本地调试模式的相关配置信息
+    NODE_ENV: 'production',
+    port: 80,
+    autoOpenBrowser: false,
+    closeHtmlWebpackPlugin: true, // 关闭HtmlWebpackPlugin
+    assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
+    assetsSubDirectory: '',
+    hostname: 'localhost',
+    proxyTable: {
+      '/apiTest': {
+        target: 'http://api-test.com.cn', // 不支持跨域的接口根地址
+        ws: true,
+        changeOrigin: true
+      }
+    },
+    cssSourceMap: true,
+    closeHotReload: true, // 是否关闭热更新
+  },
   build2lib: {
     entry: {
       // 自定义组件入口文件
@@ -70,7 +118,7 @@ module.exports = {
     // 用于构建生产环境代码的相关配置信息
     NODE_ENV: 'production',
     libraryName: 'amisWidget', // 构建第三方功能包时最后导出的引用变量名
-    assetsRoot: resolve('./dist'), // 打包后的文件绝对路径（物理路径）
+    assetsRoot: resolve('./dist2'), // 打包后的文件绝对路径（物理路径）
     assetsPublicPath: './', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '', // 资源引用二级路径
     ignoreNodeModules: true, // 打包时是否忽略 node_modules
@@ -78,6 +126,6 @@ module.exports = {
     productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
-    bundleAnalyzerReport: true,
+    bundleAnalyzerReport: false,
   }
 };
