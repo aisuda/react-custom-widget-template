@@ -35,12 +35,11 @@ module.exports = {
     // externals: ['amis-editor'],
     projectDir: ['src'],
     // template: resolve('./public/template.html'), // dev本地调试时需要html模板
-    // plugins: [new debugPlugin()]
+    // plugins: []
   },
   dev: {
     entry: { // 调试入口（本地编辑器中预览自定义组件入口）
       index: [
-        //'./editor/EditorDemo.jsx',
         './src/index.js', // widget/info-card.jsx
         './src/widget/plugin/info-card-plugin.jsx',
       ],
@@ -48,7 +47,7 @@ module.exports = {
     // 用于开启本地调试模式的相关配置信息
     NODE_ENV: 'development',
     port: 80,
-    closeEditorClient: false, // 是否关闭自动注入editor
+    // closeEditorClient: false, // 是否关闭自动注入editor
     autoOpenBrowser: true,
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '',
