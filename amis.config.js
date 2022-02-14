@@ -47,8 +47,6 @@ module.exports = {
     // 用于开启本地调试模式的相关配置信息
     NODE_ENV: 'development',
     port: 80,
-    // closeEditorClient: false, // 是否关闭自动注入editor
-    autoOpenBrowser: true,
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '',
     hostname: 'localhost',
@@ -61,6 +59,8 @@ module.exports = {
     },
     cssSourceMap: true,
     closeHotReload: false, // 是否关闭热更新
+    // closeEditorClient: false, // 是否关闭自动注入editor
+    autoOpenBrowser: true,
   },
   preview: {
     entry: { // 本地预览自定义组件内容
@@ -69,7 +69,6 @@ module.exports = {
     // 用于开启本地调试模式的相关配置信息
     NODE_ENV: 'development',
     port: 80,
-    autoOpenBrowser: true,
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '',
     hostname: 'localhost',
@@ -82,6 +81,7 @@ module.exports = {
     },
     cssSourceMap: true,
     closeHotReload: false, // 是否关闭热更新
+    autoOpenBrowser: true,
   },
   linkDebug: {
     entry: { // 外链调试（amis-saas中预览自定义组件）
@@ -93,8 +93,6 @@ module.exports = {
     // 用于开启本地调试模式的相关配置信息
     NODE_ENV: 'production',
     port: 80,
-    autoOpenBrowser: false,
-    closeHtmlWebpackPlugin: true, // 关闭HtmlWebpackPlugin
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '',
     hostname: 'localhost',
@@ -107,6 +105,8 @@ module.exports = {
     },
     cssSourceMap: true,
     closeHotReload: true, // 是否关闭热更新
+    autoOpenBrowser: false,
+    closeHtmlWebpackPlugin: true, // 关闭HtmlWebpackPlugin
   },
   build2lib: {
     entry: {
