@@ -35,3 +35,6 @@ $ npm run linkDebug
 ```bash
 $ npm run build2lib
 ```
+
+### 配置项说明（amis-widget-cli）
+[请查看amis-widget-cli](https://github.com/aisuda/amis-widget-cli)
