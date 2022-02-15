@@ -3,8 +3,13 @@
 - 备注：充当amis-widget-cli中的react技术栈组件模板
 
 ### 目录说明
-- src: 自定义组件源码
-- amis.config.js: amis-widget-cli配置文件
+- src: 自定义组件源码；
+- src/assets: 存放组件静态资源，比如 css、img等；
+- src/widget: 组件源码；
+- src/widget/info-card.jsx: 自定义组件代码；
+- src/index.js: 用于注册一个amis渲染器，注册成功后编辑器画布区中才会正常展示自定义组件内容；
+- src/widget/plugin/info-card-plugin.jsx: 用于注册一个amis-editor插件，注册成功后编辑器左侧组件面板中会展示；
+- amis.config.js: amis-widget-cli配置文件。
 
 ### 开发说明
 
