@@ -1,6 +1,6 @@
 {
   "name": "react-custom-widget-template",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "amis自定义组件模板（react技术栈）",
   "keywords": [
     "自定义组件模板",
@@ -69,7 +69,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
-    "amis-widget-cli": "^3.0.8",
+    "amis-widget-cli": "^3.0.10",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5"

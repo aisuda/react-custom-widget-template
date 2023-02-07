@@ -23,7 +23,7 @@ module.exports = {
         $assets: resolve('src/assets'),
         $public: resolve('public'),
       },
-      conditionNames: ['require']
+      // conditionNames: ['require']
     },
     // sassResources中的sass文件会自动注入每一个sass文件中
     sassResources: [
@@ -36,7 +36,10 @@ module.exports = {
     // externals: ['amis-editor'],
     projectDir: ['src'],
     // template: resolve('./public/template.html'), // dev本地调试时需要html模板
-    // plugins: []
+    // plugins: [],
+    cssLoaderOption: {
+      // modules: true,
+    },
     babelPlugins: (curBabelPlugins) => {
       curBabelPlugins.shift(); // 剔除掉 babel-plugin-import，antd5 不需要
     }
@@ -65,6 +68,7 @@ module.exports = {
     closeHotReload: false, // 是否关闭热更新
     // closeEditorClient: false, // 是否关闭自动注入editor
     autoOpenBrowser: true,
+    // editorClient: 'aipage'
   },
   preview: {
     entry: { // 本地预览自定义组件内容
@@ -95,7 +99,7 @@ module.exports = {
       ],
     },
     // 用于开启本地调试模式的相关配置信息
-    NODE_ENV: 'production',
+    NODE_ENV: 'development',
     port: 80,
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '',
@@ -124,11 +128,11 @@ module.exports = {
     assetsRoot: resolve('./dist'), // 打包后的文件绝对路径（物理路径）
     assetsPublicPath: './', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '', // 资源引用二级路径
-    ignoreNodeModules: false, // 打包时是否忽略 node_modules
+    ignoreNodeModules: true, // 打包时是否忽略 node_modules
     allowList: [], // ignoreNodeModules为true时生效
     productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
-    bundleAnalyzerReport: true,
+    bundleAnalyzerReport: false,
   }
 };

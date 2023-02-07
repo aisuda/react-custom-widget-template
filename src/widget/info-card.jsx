@@ -29,7 +29,7 @@ export default class InfoCard extends React.PureComponent {
         <div className="item-imgbox">
           <div
             className="news-img"
-            style={{ backgroundImage: `url(${curBackgroundImage})` }}
+            // style={{ backgroundImage: `url(${curBackgroundImage})` }}
           ></div>
           {img_count > 0 && <div className="img-count">{img_count}</div>}
         </div>
