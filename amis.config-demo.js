@@ -1,12 +1,9 @@
 'use strict';
 const path = require('path');
-
-// 统一路径解析
 function resolve(dir) {
   return path.resolve(__dirname, dir);
 }
 
-// 包括生产和开发的环境配置信息
 module.exports = {
   settings: {
     enableESLint: false, // 调试模式是否开启ESLint，默认开启ESLint检测代码格式
@@ -16,7 +13,6 @@ module.exports = {
   },
   webpack: {
     resolve: {
-      // webpack的resolve配置
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.umd.js', '.min.js', '.json'], // 用于配置webpack在尝试过程中用到的后缀列表
       alias: {
         '@': resolve('src'),
@@ -24,26 +20,28 @@ module.exports = {
         $public: resolve('public'),
       },
     },
-    // sassResources中的sass文件会自动注入每一个sass文件中
-    sassResources: [
-      resolve('./src/assets/css/common.scss'),
-      resolve('./src/assets/css/mixin.scss')
+    plugins: [
+      new CustomWebpackPlugin()
     ],
-    // createDeclaration: true, // 打包时是否创建ts声明文件
-    ignoreNodeModules: false, // 打包时是否忽略 node_modules
-    allowList: [], // ignoreNodeModules为true时生效
-    // externals: ['amis-editor'],
-    projectDir: ['src'],
-    // template: resolve('./public/template.html'), // dev本地调试时需要html模板
-    plugins: [ // 用于添加自定义 plugins
+    moduleRules: [
+      {
+        test: /\.(js|vue|css|html)$/,
+        loader: 'params-replace-loader',
+        options: projectConfig.envParams
+       }
     ],
-    // cssLoaderUrlDir: 'antd',
-    cssLoaderOption: {
-      // modules: true
-    },
-    moduleRules: [],
     babelPlugins: (curBabelPlugins) => {
-      curBabelPlugins.shift(); // 剔除掉 babel-plugin-import，antd5 不需要
+      // 剔除掉 babel-plugin-import，antd5 不需要
+      curBabelPlugins.shift();
+
+      // 支持 element-ui 组件按需引入（借助 babel-plugin-component）
+      curBabelPlugins.push([
+        "component",
+        {
+          "libraryName": "element-ui",
+          "styleLibraryName": "theme-chalk"
+        }
+      ]);
     }
   },
   dev: {
@@ -114,7 +112,7 @@ module.exports = {
       }
     },
     cssSourceMap: true,
-    closeHotReload: false, // 是否关闭热更新
+    closeHotReload: true, // 是否关闭热更新
     autoOpenBrowser: false,
     closeHtmlWebpackPlugin: true, // 关闭HtmlWebpackPlugin
   },

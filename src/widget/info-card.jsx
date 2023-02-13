@@ -1,13 +1,33 @@
 import * as React from 'react';
-import { Empty } from 'antd';
+import { Empty, List } from 'antd';
+import axios from 'axios';
 import './style.scss'; // 组件内容样式
 import myStyle from './cssModule.css';
 
 export default class InfoCard extends React.PureComponent {
   constructor() {
     super();
-    this.agreeDataFormat = this.agreeDataFormat.bind(this);
+    this.state = {
+      apiData: [],
+    };
+
+    // 发起一个接口请求，获取动态数据
+    axios({
+      method: 'get',
+      url: 'https://yapi.smart-xwork.cn/mock/170216/list',
+      data: {
+        firstName: 'Fred',
+        lastName: 'Flintstone',
+      },
+    }).then((response) => {
+      if (response && response.status === 200 && response.data) {
+        this.setState({
+          apiData: response.data.data?.items || [],
+        });
+      }
+    });
   }
+
   agreeDataFormat(agreeData) {
     if (agreeData && agreeData <= 9999) {
       return agreeData;
@@ -16,12 +36,20 @@ export default class InfoCard extends React.PureComponent {
       return `${Math.floor(agreeData / 1000) / 10}w`;
     }
   }
+
   render() {
-    console.log('myStyle:', myStyle);
     const { title, backgroundImage, img_count, comment_count } = this.props;
+
+    // 从本地API接口请求中获取动态数据
+    // const apiData =this.state.apiData;
+
+    // 从props中的上下文数据data取动态数据（service组件中的动态数据）
+    const apiData = this.props.data?.items;
+
     const curBackgroundImage =
       backgroundImage ||
       'https://search-operate.cdn.bcebos.com/64c279f23794a831f9a8e7a4e0b722dd.jpg';
+
     return (
       <div className={`news-card ${myStyle.cssTest1}`}>
         <div className="news-title">
@@ -43,10 +71,27 @@ export default class InfoCard extends React.PureComponent {
             </div>
           )}
         </div>
-        <Empty
-          image={Empty.PRESENTED_IMAGE_SIMPLE}
-          description={<>暂无内容</>}
-        />
+        <h3>动态数据内容：</h3>
+        {apiData && apiData.length > 0 && (
+          <List
+            itemLayout="horizontal"
+            dataSource={apiData}
+            renderItem={(item) => (
+              <List.Item>
+                <List.Item.Meta
+                  title={<a href="https://ant.design">{item.name}</a>}
+                  description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                />
+              </List.Item>
+            )}
+          />
+        )}
+        {(!apiData || apiData.length === 0) && (
+          <Empty
+            image={Empty.PRESENTED_IMAGE_SIMPLE}
+            description={<>暂无数据</>}
+          />
+        )}
       </div>
     );
   }
