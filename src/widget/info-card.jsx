@@ -37,7 +37,6 @@ export default class InfoCard extends React.PureComponent {
   }
 
   async componentDidMount() {
-    // 使用amis事件动作 触发tabs组件切换
     const { dispatchEvent, data, env } = this.props;
 
     if (dispatchEvent) {
