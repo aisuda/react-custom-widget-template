@@ -1,15 +1,23 @@
 import * as React from 'react';
 import { Empty, List } from 'antd';
+import { ScopedContext } from 'amis-core';
 import axios from 'axios';
 import './style.scss'; // 组件内容样式
 import myStyle from './cssModule.css';
 
 export default class InfoCard extends React.PureComponent {
-  constructor() {
-    super();
+  // 指定 contextType 读取当前的 scope context。
+  // React 会往上找到最近的 scope Provider，然后使用它的值。
+  static contextType = ScopedContext;
+
+  constructor(props, context) {
+    super(props);
     this.state = {
       apiData: [],
     };
+
+    const scoped = context;
+    scoped.registerComponent(this);
 
     // 发起一个接口请求，获取动态数据
     axios({
@@ -28,6 +36,22 @@ export default class InfoCard extends React.PureComponent {
     });
   }
 
+  async componentDidMount() {
+    // 使用amis事件动作 触发tabs组件切换
+    const { dispatchEvent, data, env } = this.props;
+
+    if (dispatchEvent) {
+      // 触发一个渲染器事件: custom-widget-DidMount
+      dispatchEvent('custom-widget-DidMount', data, this);
+    }
+  }
+
+  componentWillUnmount() {
+    super.componentWillUnmount();
+    const scoped = this.context;
+    scoped.unRegisterComponent(this);
+  }
+
   agreeDataFormat(agreeData) {
     if (agreeData && agreeData <= 9999) {
       return agreeData;
@@ -37,14 +61,34 @@ export default class InfoCard extends React.PureComponent {
     }
   }
 
+  /**
+   * 动作处理:
+   * 在这里设置自定义组件对外暴露的动作，其他组件可以通过组件动作触发自定义组件的对应动作
+   */
+  doAction(action, args) {
+    const actionType = action ? action.actionType : '';
+
+    if (actionType === 'message') {
+      // 接收外部组件的事件动作'message'
+      alert('您触发了自定义组件的事件动作[message]');
+    } else {
+      console.log(
+        '自定义组件中监听到的事件动作：',
+        action,
+        ', 事件参数：',
+        args,
+      );
+    }
+  }
+
   render() {
     const { title, backgroundImage, img_count, comment_count } = this.props;
 
     // 从本地API接口请求中获取动态数据
-    // const apiData =this.state.apiData;
+    // const apiData = this.state.apiData;
 
     // 从props中的上下文数据data取动态数据（service组件中的动态数据）
-    const apiData = this.props.data?.items;
+    const apiData = this.props.data?.items || this.state.apiData;
 
     const curBackgroundImage =
       backgroundImage ||
