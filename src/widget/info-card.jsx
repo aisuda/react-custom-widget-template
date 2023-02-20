@@ -43,6 +43,20 @@ export default class InfoCard extends React.PureComponent {
       // 触发一个渲染器事件: custom-widget-DidMount
       dispatchEvent('custom-widget-DidMount', data, this);
     }
+
+    // 自定义组件埋点示例：https://aisuda.bce.baidu.com/amis/zh-CN/docs/extend/tracker
+    if (env.tracker) {
+      env.tracker(
+        {
+          eventTrack: 'custom-widget-event',
+          eventData: {
+            'widget-event-name': 'react-info-card',
+            'widget-event-type': 'componentDidMount',
+          },
+        },
+        this.props,
+      );
+    }
   }
 
   componentWillUnmount() {
