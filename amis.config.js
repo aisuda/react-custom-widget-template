@@ -131,7 +131,7 @@ module.exports = {
     assetsPublicPath: './', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '', // 资源引用二级路径
     ignoreNodeModules: true, // 打包时是否忽略 node_modules
-    allowList: ['catl-components/dist/esm/cards/CrandPurchaseCard/index.less'], // ignoreNodeModules为true时生效
+    allowList: [], // ignoreNodeModules为true时生效
     productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
