@@ -12,7 +12,7 @@ module.exports = {
     enableESLint: false, // 调试模式是否开启ESLint，默认开启ESLint检测代码格式
     enableESLintFix: false, // 是否自动修正代码格式，默认不自动修正
     enableStyleLint: false, // 是否开启StyleLint，默认开启ESLint检测代码格式
-    enableStyleLintFix: false // 是否需要StyleLint自动修正代码格式
+    enableStyleLintFix: false, // 是否需要StyleLint自动修正代码格式
   },
   webpack: {
     resolve: {
@@ -28,7 +28,7 @@ module.exports = {
     // sassResources中的sass文件会自动注入每一个sass文件中
     sassResources: [
       resolve('./src/assets/css/common.scss'),
-      resolve('./src/assets/css/mixin.scss')
+      resolve('./src/assets/css/mixin.scss'),
     ],
     // createDeclaration: true, // 打包时是否创建ts声明文件
     ignoreNodeModules: false, // 打包时是否忽略 node_modules
@@ -44,10 +44,11 @@ module.exports = {
     moduleRules: [],
     babelPlugins: (curBabelPlugins) => {
       curBabelPlugins.shift(); // 剔除掉 babel-plugin-import，antd5 不需要
-    }
+    },
   },
   dev: {
-    entry: { // 本地编辑器中预览自定义组件
+    entry: {
+      // 本地编辑器中预览自定义组件
       index: [
         './src/index.js', // widget/info-card.jsx
         './src/widget/plugin/info-card-plugin.jsx',
@@ -63,8 +64,8 @@ module.exports = {
       '/apiTest': {
         target: 'http://api-test.com.cn', // 不支持跨域的接口根地址
         ws: true,
-        changeOrigin: true
-      }
+        changeOrigin: true,
+      },
     },
     cssSourceMap: true,
     closeHotReload: false, // 是否关闭热更新
@@ -73,7 +74,8 @@ module.exports = {
     // editorClient: 'aipage'
   },
   preview: {
-    entry: { // 本地预览自定义组件内容
+    entry: {
+      // 本地预览自定义组件内容
       index: './src/preview.js',
     },
     // 用于开启本地调试模式的相关配置信息
@@ -86,15 +88,16 @@ module.exports = {
       '/apiTest': {
         target: 'http://api-test.com.cn', // 不支持跨域的接口根地址
         ws: true,
-        changeOrigin: true
-      }
+        changeOrigin: true,
+      },
     },
     cssSourceMap: true,
     closeHotReload: false, // 是否关闭热更新
     autoOpenBrowser: true,
   },
   linkDebug: {
-    entry: { // 外链调试（amis-saas中预览自定义组件）
+    entry: {
+      // 外链调试（amis-saas中预览自定义组件）
       index: [
         './src/index.js', // widget/info-card.jsx
         './src/widget/plugin/info-card-plugin.jsx',
@@ -110,8 +113,8 @@ module.exports = {
       '/apiTest': {
         target: 'http://api-test.com.cn', // 不支持跨域的接口根地址
         ws: true,
-        changeOrigin: true
-      }
+        changeOrigin: true,
+      },
     },
     cssSourceMap: true,
     closeHotReload: true, // 是否关闭热更新
@@ -122,7 +125,7 @@ module.exports = {
     entry: {
       // 自定义组件入口文件
       reactInfoCard: './src/index.js', // widget/info-card.jsx
-      reactInfoCardPlugin: './src/widget/plugin/info-card-plugin.jsx'
+      reactInfoCardPlugin: './src/widget/plugin/info-card-plugin.jsx',
     },
     // 用于构建生产环境代码的相关配置信息
     NODE_ENV: 'production',
@@ -136,5 +139,5 @@ module.exports = {
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
     bundleAnalyzerReport: false,
-  }
+  },
 };
