@@ -31,7 +31,7 @@ export class InfoCardPlugin {
           'amis 是一个低代码前端框架，它使用 JSON 配置来生成页面，可以减少页面开发工作量，极大提升效率。',
       }),
       {
-        type: 'text',
+        type: 'input-text',
         name: 'backgroundImage',
         label: '展示图片',
         value:
